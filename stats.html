@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from pegasis-typing.web.app/stats.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:19:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>stats</title>
+ 
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta charset="UTF-8">	
+	 <script src="../cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="css/homes.css">
+  <link rel="stylesheet" type="text/css" href="css/stat.css">
+
+
+<script src="../unpkg.com/aos%402.3.1/dist/aos.js"></script>
+<link href="../unpkg.com/aos%402.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+
+<div id="myNav" class="overlay" style="background-color: red; z-index: 4;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-arrow-circle-left"></i></a>
+  <div class="overlay-content">
+    <a href="http://pegasis-typing.firebaseapp.com/#home" onclick="closeNav()" id="navcontent">Home</a>
+    <a href="http://pegasis-typing.firebaseapp.com/stats.html" onclick="closeNav()" id="navcontent">Dashboard</a>
+    <a href="http://pegasis-typing.firebaseapp.com/#themes" onclick="closeNav()" id="navcontent">Start Typing</a>
+    <a href="http://pegasis-typing.firebaseapp.com/#team" onclick="closeNav()" id="navcontent">Team</a>
+  </div>
+</div>
+  
+<div class="header" style="position: inherit;">
+<div class="bar" onclick="openNav()"><i style="color: white; margin-top: 5px;" class="fas fa-bars"></i></div>
+<div class="name">PEGASIS TYPING<div style="display: inline-block;"><img src="images/pegasus1.jpg" style="height: 40px; width: 40px; box-shadow: none;"></div></div>
+<div class="log" onclick="googleSignin()" id="login">LOGIN</div>
+<div class="log" onclick="googleSignout()" id="logout" style="display: none;">LOGOUT</div>
+
+<div id="gui"></div>
+</div>
+
+
+<div class="advice" style="display: none;"><h2 style="color: black; font-weight: bold;">Please login to view the statistics</h2></div>
+
+
+ 
+<div class="rowone" style="height: 100vh;">
+  <div class="columnone">
+    <div id="graphstat"></div>
+  </div>
+  <div class="columnonetwo">
+    <div id="graphstattwo" data-aos="fade-up"></div>
+  </div>
+  <div class="columnonetwo">
+    <div id="graphstatthree" data-aos="fade-up"></div>
+  </div>
+  <div class="columnone" style="padding-bottom: 50px;">
+   <div class="stylethree" data-aos="fade-right">
+    <h1 style="color: black;">Accuracy, No.of Rights, No of Wrongs of Each Letter</h1>
+
+ </div>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="column" data-aos="fade-up">
+     <div id="onee" style="background-color: green;">
+     	<h1 style="color: white">A</h1>
+      <hr>
+      <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+     	<h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+     </div>
+  </div>
+  <div class="column" data-aos="fade-up">
+    <div id="onee" style="background-color: blue;">
+    <h1 style="color: white">B</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+  <div class="column" data-aos="fade-up">
+    <div id="onee" style="background-color: black;">
+      <h1 style="color: white">C</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+  <div class="column" data-aos="fade-up">
+    <div id="onee" style="background-color: violet;">
+      <h1 style="color: white">D</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-up">
+    <div id="onee" style="background-color: red">
+       <h1 style="color: white">E</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: purple">
+       <h1 style="color: white">F</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: gold">
+       <h1 style="color: white">G</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: brown">
+       <h1 style="color: white">H</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: indigo">
+       <h1 style="color: white">I</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: #ff0080">
+       <h1 style="color: white">J</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-left">
+    <div id="onee" style="background:linear-gradient(90deg, #667eea 0%,#764ba2 100% );">
+       <h1 style="color: white">K</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+  </div>
+   <div class="column" data-aos="fade-left">
+    <div id="onee" style="background:linear-gradient(90deg, #00b09b 0%,#96c93d 100% );">
+       <h1 style="color: white">L</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+   </div>
+    <div class="column" data-aos="fade-left">
+    <div id="onee" style="background:linear-gradient(90deg, #000046 0%,#1cb5e0 100% );">
+       <h1 style="color: white">M</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+   <div class="column" data-aos="fade-left">
+    <div id="onee" style="background:linear-gradient(90deg, #fc4a1a 0%,#f7b733 100% );">
+       <h1 style="color: white">N</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="column" data-aos="fade-left">
+    <div id="onee" style="background:linear-gradient(90deg, #bdc3c7 0%,#2c3e50 100% );">
+       <h1 style="color: white">O</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-right">
+    <div id="onee" style="background:linear-gradient(90deg, #e0eafc 0%,#cfdef3 100% );">
+       <h1 style="color: white">P</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-right">
+    <div id="onee" style="background:linear-gradient(90deg, #fd746c 0%,#ff9068 100% );">
+       <h1 style="color: white">Q</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-right">
+    <div id="onee" style="background:linear-gradient(90deg, #00c9ff 0%,#92fe9d 100% );">
+       <h1 style="color: white">R</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-right">
+    <div id="onee" style="background:linear-gradient(90deg, #d91650 0%,#f0f3f9 50%,#ffbf47 65% );">
+       <h1 style="color: white">S</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-right">
+    <div id="onee" style="background:linear-gradient(90deg, #093028 0%,#237a57 100% );">
+       <h1 style="color: white">T</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+   <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: rgb(0, 218, 255);">
+       <h1 style="color: white">U</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: #8bc34a">
+       <h1 style="color: white">V</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: darkgrey">
+       <h1 style="color: white">W</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: rgb(17, 117, 188)">
+       <h1 style="color: white">X</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+  <div class="column" data-aos="fade-down">
+    <div id="onee" style="background-color: black">
+       <h1 style="color: white">Y</h1>
+      <hr>
+       <div class="datastyle">
+      <h5 style="color: white; width: 27%;"><i class="fas fa-bolt fa-2x"></i><i class="dataget">0</i></h5>
+      <h5 style="color: white"><i class="far fa-check-circle fa-2x"></i><i class="dataget">0</i></h5>
+        <h5 style="color: white"><i class="far fa-times-circle fa-2x"></i><i class="dataget">0</i></h5>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="__/firebase/7.2.3/firebase-app.js"></script>
+
+  <script src="__/firebase/7.2.3/firebase-auth.js"></script>
+  <script src="../www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="__/firebase/init.js"></script>
+
+</body>
+
+
+<script type="text/javascript" src="javascript/stat.js"></script>
+<script type="text/javascript" src="javascript/auth.js"></script>
+<script type="text/javascript">
+      AOS.init();
+
+
+
+
+  function openNav() {
+  
+    document.getElementById("gui").classList.add("dot")
+     document.getElementById("gui").style.display = "block"
+
+     setTimeout(nav, 1100)
+     function nav() {
+      document.querySelector(".overlay").style.display = "block"
+     }
+    
+   
+
+
+  }
+
+
+   
+       function closeNav(){
+
+         document.querySelector(".dot").style.animationName = "downing"
+         document.querySelector(".overlay").style.display = "none"
+         
+        setTimeout(down, 800)
+        function down() {  
+          document.querySelector("#gui").style.display = "none"
+          document.querySelector(".dot").style.animationName = "scaling"
+
+     }
+    };
+
+
+</script>
+
+<!-- Mirrored from pegasis-typing.web.app/stats.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:19:05 GMT -->
+</html>
+

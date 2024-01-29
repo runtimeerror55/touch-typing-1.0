@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from pegasis-typing.web.app/five.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:19:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>challenges</title>
+  	
+	
+	
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ 
+	<link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/Typing.css">
+  <link rel="stylesheet" type="text/css" href="css/challenges.css">
+  <link rel="stylesheet" type="text/css" href="css/theme8.css">
+
+
+
+<script type="text/javascript" src="javascript/paper-full.js"></script>
+
+<script type="text/javascript" src="../cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+
+
+
+<script type="text/paperscript" canvas="myCanvas">
+
+
+
+function Ball(r, p, v) {
+  this.radius = r;
+  this.point = p;
+  this.vector = v;
+  this.maxVec = 3;
+  this.numSegment = Math.floor(r / 3 + 2);
+  this.boundOffset = [];
+  this.boundOffsetBuff = [];
+  this.sidePoints = [];
+  this.path = new Path({
+    fillColor: {
+      hue: Math.random() * 360,
+      saturation: 1,
+      brightness: 1
+    },
+    blendMode: 'lighter'
+  });
+
+  for (var i = 0; i < this.numSegment; i ++) {
+    this.boundOffset.push(this.radius);
+    this.boundOffsetBuff.push(this.radius);
+    this.path.add(new Point());
+    this.sidePoints.push(new Point({
+      angle: 360 / this.numSegment * i,
+      length: 1
+    }));
+  }
+}
+
+Ball.prototype = {
+  iterate: function() {
+    this.checkBorders();
+    if (this.vector.length > this.maxVec)
+      this.vector.length = this.maxVec;
+    this.point += this.vector;
+    this.updateShape();
+  },
+
+  checkBorders: function() {
+    var size = view.size;
+    if (this.point.x < -this.radius)
+      this.point.x = size.width + this.radius;
+    if (this.point.x > size.width + this.radius)
+      this.point.x = -this.radius;
+    if (this.point.y < -this.radius)
+      this.point.y = size.height + this.radius;
+    if (this.point.y > size.height + this.radius)
+      this.point.y = -this.radius;
+  },
+
+  updateShape: function() {
+    var segments = this.path.segments;
+    for (var i = 0; i < this.numSegment; i ++)
+      segments[i].point = this.getSidePoint(i);
+
+    this.path.smooth();
+    for (var i = 0; i < this.numSegment; i ++) {
+      if (this.boundOffset[i] < this.radius / 4)
+        this.boundOffset[i] = this.radius / 4;
+      var next = (i + 1) % this.numSegment;
+      var prev = (i > 0) ? i - 1 : this.numSegment - 1;
+      var offset = this.boundOffset[i];
+      offset += (this.radius - offset) / 15;
+      offset += ((this.boundOffset[next] + this.boundOffset[prev]) / 2 - offset) / 3;
+      this.boundOffsetBuff[i] = this.boundOffset[i] = offset;
+    }
+  },
+
+  react: function(b) {
+    var dist = this.point.getDistance(b.point);
+    if (dist < this.radius + b.radius && dist != 0) {
+      var overlap = this.radius + b.radius - dist;
+      var direc = (this.point - b.point).normalize(overlap * 0.015);
+      this.vector += direc;
+      b.vector -= direc;
+
+      this.calcBounds(b);
+      b.calcBounds(this);
+      this.updateBounds();
+      b.updateBounds();
+    }
+  },
+
+  getBoundOffset: function(b) {
+    var diff = this.point - b;
+    var angle = (diff.angle + 180) % 360;
+    return this.boundOffset[Math.floor(angle / 360 * this.boundOffset.length)];
+  },
+
+  calcBounds: function(b) {
+    for (var i = 0; i < this.numSegment; i ++) {
+      var tp = this.getSidePoint(i);
+      var bLen = b.getBoundOffset(tp);
+      var td = tp.getDistance(b.point);
+      if (td < bLen) {
+        this.boundOffsetBuff[i] -= (bLen  - td) / 2;
+      }
+    }
+  },
+
+  getSidePoint: function(index) {
+    return this.point + this.sidePoints[index] * this.boundOffset[index];
+  },
+
+  updateBounds: function() {
+    for (var i = 0; i < this.numSegment; i ++)
+      this.boundOffset[i] = this.boundOffsetBuff[i];
+  }
+};
+
+//--------------------- main ---------------------
+
+var balls = [];
+var numBalls = 18;
+for (var i = 0; i < numBalls; i++) {
+  var position = Point.random() * view.size;
+  var vector = new Point({
+    angle: 360 * Math.random(),
+    length: Math.random() * 10
+  });
+  var radius = Math.random() * 60 + 60;
+  balls.push(new Ball(radius, position, vector));
+}
+
+function onFrame() {
+  for (var i = 0; i < balls.length - 1; i++) {
+    for (var j = i + 1; j < balls.length; j++) {
+      balls[i].react(balls[j]);
+    }
+  }
+  for (var i = 0, l = balls.length; i < l; i++) {
+    balls[i].iterate();
+  }
+}
+
+
+</script>
+
+
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+
+  var keyData = {
+      q: {
+        sound: new Howl({
+          src: ['sounds/bubbles.mp3']
+        }),
+        color: '#1abc9c'
+      },
+      w: {
+        sound: new Howl({
+          src: ['sounds/clay.mp3']
+        }),
+        color: '#2ecc71'
+      },
+      e: {
+        sound: new Howl({
+          src: ['sounds/confetti.mp3']
+        }),
+        color: '#3498db'
+      },
+      r: {
+        sound: new Howl({
+          src: ['sounds/corona.mp3']
+        }),
+        color: '#9b59b6'
+      },
+        t: {
+        sound: new Howl({
+          src: ['sounds/dotted-spiral.mp3']
+        }),
+        color: '#34495e'
+      },
+      y: {
+        sound: new Howl({
+          src: ['sounds/flash-1.mp3']
+        }),
+        color: '#16a085'
+      },
+      u: {
+        sound: new Howl({
+          src: ['sounds/flash-2.mp3']
+        }),
+        color: '#27ae60'
+      },
+      j: {
+        sound: new Howl({
+          src: ['sounds/flash-3.mp3']
+        }),
+        color: '#2980b9'
+      },
+      s: {
+        sound: new Howl({
+          src: ['sounds/glimmer.mp3']
+        }),
+        color: '#8e44ad'
+      },
+      p: {
+        sound: new Howl({
+          src: ['sounds/moon.mp3']
+        }),
+        color: '#2c3e50'
+      },
+      a: {
+        sound: new Howl({
+          src: ['sounds/pinwheel.mp3']
+        }),
+        color: '#f1c40f'
+      },
+      o: {
+        sound: new Howl({
+          src: ['sounds/piston-1.mp3']
+        }),
+        color: '#e67e22'
+      },
+        d: {
+        sound: new Howl({
+          src: ['sounds/piston-2.mp3']
+        }),
+        color: '#e74c3c'
+      },
+      f: {
+        sound: new Howl({
+          src: ['sounds/prism-1.mp3']
+        }),
+        color: '#95a5a6'
+      },
+      g: {
+        sound: new Howl({
+          src: ['sounds/prism-2.mp3']
+        }),
+        color: '#f39c12'
+      },
+      h: {
+        sound: new Howl({
+          src: ['sounds/prism-3.mp3']
+        }),
+        color: '#d35400'
+      },
+      z: {
+        sound: new Howl({
+          src: ['sounds/splits.mp3']
+        }),
+        color: '#1abc9c'
+      },
+      i: {
+        sound: new Howl({
+          src: ['sounds/squiggle.mp3']
+        }),
+        color: '#2ecc71'
+      },
+      l: {
+        sound: new Howl({
+          src: ['sounds/strike.mp3']
+        }),
+        color: '#3498db'
+      },
+      k: {
+        sound: new Howl({
+          src: ['sounds/suspension.mp3']
+        }),
+        color: '#9b59b6'
+      },
+      x: {
+        sound: new Howl({
+          src: ['sounds/timer.mp3']
+        }),
+        color: '#34495e'
+      },
+      c: {
+        sound: new Howl({
+          src: ['sounds/ufo.mp3']
+        }),
+        color: '#16a085'
+      },
+      v: {
+        sound: new Howl({
+          src: ['sounds/veil.mp3']
+        }),
+        color: '#27ae60'
+      },
+      b: {
+        sound: new Howl({
+          src: ['sounds/wipe.mp3']
+        }),
+        color: '#2980b9'
+      },
+      n: {
+        sound: new Howl({
+          src: ['sounds/zig-zag.mp3']
+        }),
+        color: '#8e44ad'
+      },
+      m: {
+        sound: new Howl({
+          src: ['sounds/moon.mp3']
+        }),
+        color: '#2c3e50'
+      }
+    }
+
+     function onKeyDown(event) {
+      keyData[event.key].sound.play();
+  
+    }
+</script>
+
+
+<script src="../cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body class="background" style="animation-name: none;">
+	
+   <div class="anim divone shadow6">
+   <div class="main scroll" style="overflow-y: scroll; scroll-behavior: smooth;"><p style="color: white; margin-top: 5px; margin-left: 10px; margin-right: 2px; margin-bottom: 0px;" class="element"></p></div> 
+
+
+</div>
+
+
+<div class="awesome">
+<div class="tooltip">
+    <button onclick="drop()" class="dropbtn buttons extra" id="be"><div id="load" style="display: inline-block;"></div>Select</button>
+    <span class="tooltiptext">select</span>
+</div>
+<div id="myDropdown" class="dropdown-content">
+    <a class="time" href="#home">60s</a>
+    <a class="time" href="#about">120s</a>
+    <a class="time" href="#contact">180s</a>
+    <a class="time" href="#contact">240s</a>
+    <a class="time" href="#contact">300s</a>
+</div>
+<div class="tooltip">
+  <button class="buttons" id="be"><i class="fas fa-stopwatch fa-2x" style="color: white; margin-left: 0px;"><div id="countdown">:0</div></i></button>
+  <span class="tooltiptext">Countdown</span>
+</div>
+
+<div class="tooltip">
+  <button class="buttons" id="be"><i class="fas fa-rocket fa-2x wpm">:0</i></button>
+<span class="tooltiptext">WPM</span>
+</div>
+
+<div class="tooltip">
+  <button class="buttons" id="be"><i class="fas fa-bolt fa-2x accurate">:0%</i></button>
+  <span class="tooltiptext">Accuracy</span>
+</div>
+
+<div class="tooltip">
+  <button class="buttons" id="be"><i class="far fa-check-circle fa-2x data">:0</i></button>
+  <span class="tooltiptext">Right Characters</span>
+</div>
+
+</div>
+
+
+ <div class="anim divtwo shadow6">
+   <div class="main"><textarea spellcheck="false" style="margin-top: 0px; margin-left: 15px; line-height: 2.2; color: lightslategray;"  type= text rows="5" cols="34" placeholder="Volume up. Click on select. Select time. Wait for 5s. double click in this box to start the countdown. Follow the same above rules if the countdown ends. The ending word of the paragraph might not be meaningful. Ignore it. Hope you enjoy the Typing Experience. There are maximimum of 690 characters in each paragraph. If you type 690 characters before the time ends, all calculations are done for the time that you took only. we will add more paragraphs and characters in the coming days. Also More features and innovation will be comming sooner than later. Stay Tuned!!" ondblclick="start()" onkeydown="myFunction(event)" onkeypress="char()"></textarea></div> 
+   
+
+</div>
+
+
+<p style="font-size: 0.2em" class="display">That's Samsung Galaxy Fold essentially takes the recent Galaxy S10 Plus and turns it into a platform for a wild new kind of device. It has a flexible 7.3-inch OLED screen that folds up, with a second little screen on the outside. The result is a tiny Android tablet that folds up into phone that's much smaller than a tablet albeit much thicker. Because it's a new kind of device, there are a thousand things to talk about, the kinds of things that we don't usually need to address when we're talking about plain old smartphones. Which way does the screen fold? Is plastic really durable enough? Is there a gap when it's folded? Is it too heavy? What is the hinge mechanism like? How does the software translate from a small screen to a big screen? Is there a visible crease in the screen? If there is a crease, how noticeable is it, and should we be forgiving of it in the same way we forgive notches?
+</p>
+
+<p style="font-size: 0.2em" class="display">Apple's Worldwide Developer Conference 2019 is just weeks away now. As the event comes closer, the leaks and rumours about the event seems to have increased. Now a new report from Bloomberg confirms some of these speculations. According to the report, the iPhone maker will be releasing a bunch of new apps, features and other development tools at the conference scheduled to start on June 3.
+Needless to say, there will be major operating system updates for Apple iPhones, iPad, Mac devices, Apple TV and the Apple Watch. Some of the main iOS apps including Maps, Reminders and Messages will reportedly get big upgrades this year. New and upgraded apps for the Watch are supposed to make it work more independently than before, while health freaks will get additional fitness-tracking capabilities in iDevices.</p>
+
+<p style="font-size: 0.2em" class="display">Tech giant Google is all set to hold the 2019 edition of its annual developer conference Google I/O 2019 today. At the event, Google is expected to launch two new Google Pixel devices - Pixel 3a and Pixel 3a XL. It is also speculated that the company may announce the Android Q operating system in addition to the upgrades to Google Assistant, Google Maps, Android TV and more.
+The event will kickstart at 10:00 am PDT (10:30pm IST) in Mountain View, California and will be broadcasted live on the official Google I/O website. Those interested can watch the event live on Google Developers YouTube channel, Twitter handle and Facebook page. Thank you for visiting the page.Hope you liked it.</p>
+
+<p style="font-size: 0.2em" class="display">Elon Musk is a South African-born American entrepreneur who founded X.com in 1999 (which later became PayPal), SpaceX in 2002 and Tesla Motors in 2003. Musk became a multimillionaire in his late 20s when he sold his start-up company, Zip2, to a division of Compaq Computers.Elon Musk is working to revolutionize transportation both on Earth and in space.His automaker, Tesla Motors, which was founded in 2003, is bringing fully-electric vehicles to the mass market.He settled with the SEC in September 2018 for making alleged "false statements" about a plan to take Tesla private, and had to step down as chairman.SpaceX, Musk's rocket company, is now valued at more than $20 billion.He grew up in South Africa, then immigrated to Canada at age 17. He landed in the US as a transfer student at the University of Pennsylvania.</p>
+
+<p style="font-size: 0.2em" class="display">An election is a formal group decision-making process by which a population chooses an individual to hold public office. Elections have been the usual mechanism by which modern representative democracy has operated since the 17th century. Elections may fill offices in the legislature, sometimes in the executive and judiciary, and for regional and local government. This process is also used in many other private and business organizations, from clubs to voluntary associations and corporations. The universal use of elections as a tool for selecting representatives in modern representative democracies is in contrast with the practice in the democratic archetype, ancient Athens, where the Elections were not used were considered an oligarchic institution and most political offices were filled using sortition, also known as allotment, by which officeholders were chosen by lot. To elect means "to choose or make a decision", and so sometimes other forms of ballot such as referendums are referred to as elections, especially in the United States.</p>
+
+<p style="font-size: 0.2em" class="display">A black hole is a region of spacetime exhibiting gravitational acceleration so strong that no particles or even electromagnetic radiation such as light can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed. In many ways, a black hole acts like an ideal black body, as it reflects no light. Moreover, quantum field theory in curved spacetime predicts that event horizons emit Hawking radiation, with the same spectrum as a black body of a temperature inversely proportional to its mass. This temperature is on the order of billionths of a kelvin for black holes of stellar mass, making it essentially impossible to observe.</p>
+
+<p style="font-size: 0.2em" class="display">Typing is the process of writing or inputting text by pressing keys on a typewriter, computer keyboard, cell phone, or calculator. It can be distinguished from other means of text input, such as handwriting and speech recognition. Text can be in the form of letters,numbers and other symbols. The world's first typist was Lillian Sholes from Wisconsin,the daughter of Christopher Sholes,who invented the first practical typewriter. Words per minute (WPM) is a measure of typing speed, commonly used in recruitment. For the purposes of WPM measurement a word is standardized to five characters or keystrokes. Therefore, "brown" counts as one word, but "mozzarella" counts as two. The benefits of a standardized measurement of input speed are that it enables comparison across language and hardware boundaries. The speed of an Afrikaans-speaking operator in Cape Town can be compared with a French-speaking operator in Paris.In one study of average computer users, the average rate for transcription was 33 words per minute, and 19 words per minute for composition.</p>
+
+<p style="font-size: 0.2em" class="display">Mahendra Singh Dhoni commonly known as MS Dhoni is an Indian international cricketer who captained the Indian national team in limited overs formats from 2007 to 2016 and in Test cricket from 2008 to 2014. Under his captaincy, India won the 2007 ICC World Twenty20, 2007-08 Commonwealth Bank Series, the 2010 and 2016 Asia Cups, the 2011 ICC Cricket World Cup and the 2013 ICC Champions Trophy. An attacking right handed middle-order batsman and wicket keeper, he is widely regarded as one of the greatest finishers in limited overs cricket. He is also regarded as one of the best wicket-keepers in world cricket. In 2012, SportsPro rated Dhoni as the sixteenth most marketable athlete in the world. Dhoni is the co-owner of Indian Super League team Chennaiyin FC. In June 2015, Forbes ranked Dhoni at 23rd in the list of highest paid athletes in the world, estimating his earnings at US$31 million. In 2016, a biopic M.S. Dhoni: The Untold Story was made about him. He made his One Day International debut in December 2004 against Bangladesh, and played his first Test a year later against Sri Lanka.</p>
+
+<p style="font-size: 0.2em" class="display">A rose is a woody perennial flowering plant of the genus Rosa, in the family Rosaceae, or the flower it bears. There are over three hundred species and thousands of cultivars. They form a group of plants that can be erect shrubs, climbing, or trailing, with stems that are often armed with sharp prickles. Flowers vary in size and shape and are usually large and showy, in colours ranging from white through yellows and reds. Most species are native to Asia, with smaller numbers native to Europe, North America, and northwestern Africa. Species, cultivars and hybrids are all widely grown for their beauty and often are fragrant. Roses have acquired cultural significance in many societies. Rose plants range in size from compact, miniature roses, to climbers that can reach seven meters in height. Different species hybridize easily, and this has been used in the development of the wide range of garden roses.The aggregate fruit of the rose is a berry-like structure called a rose hip. Many of the domestic cultivars do not produce hips, as the flowers are so tightly petalled that they do not provide access for pollination.</p>
+
+<p style="font-size: 0.2em" class="display">Albert Einstein was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics). His work is also known for its influence on the philosophy of science. He is best known to the general public for his mass energy equivalence formula E = mc^2, which has been dubbed "the world's most famous equation". He received the 1921 Nobel Prize in Physics for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect, a pivotal step in the development of quantum theory.Near the beginning of his career, Einstein thought that Newtonian mechanics was no longer enough to reconcile the laws of classical mechanics with the laws of the electromagnetic field. This led him to develop his special theory of relativity during his time at the Swiss Patent Office in Bern. However, he realized that the principle of relativity could also be extended to gravitational fields, and he published a paper on general relativity in 1916 with his theory of gravitation. He continued to deal with problems of statistical mechanics and quantum theory, which led to his explanations of particle theory and the motion of molecules. He also investigated the thermal properties of light which laid the foundation of the photon theory of light.</p>
+
+
+
+<div class="smallsize">Please view this page on laptops and desktops.Thank you</div>
+
+
+
+ <div id="myDivone" class="dis"></div>
+ <div id="myDivtwo" class="dis"></div>
+ <div id="myDivthree" class="dis"></div>	
+<div id="back" class="dis" onclick="closing()"><i class="fas fa-arrow-circle-left"></i></div>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="__/firebase/7.2.3/firebase-app.js"></script>
+
+  <script src="__/firebase/7.2.3/firebase-auth.js"></script>
+  <script src="../www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="__/firebase/init.js"></script>
+
+</body>
+
+<canvas id="myCanvas" style="width: 100%; height: 100%" resize></canvas>
+
+<script type="text/javascript" src="javascript/mains.js"></script>
+ 
+
+
+
+
+<!-- Mirrored from pegasis-typing.web.app/five.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:19:08 GMT -->
+</html>

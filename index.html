@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from pegasis-typing.web.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:18:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>Homepage</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/homes.css">
+<link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<link href="../unpkg.com/aos%402.3.1/dist/aos.css" rel="stylesheet">
+<script src="../unpkg.com/aos%402.3.1/dist/aos.js"></script>
+
+<script type="text/javascript" src="javascript/paper-full.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<script type="text/javascript" src="../cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+ <script src="../ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 2500, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+<script type="text/paperscript" canvas="myCanvas">
+
+
+  var count = 150;
+
+// Create a symbol, which we will use to place instances of later:
+var path = new Path.Circle({
+  center: [0, 0],
+  radius: 10,
+  fillColor: 'blue',
+  strokeColor: '#00f260'
+});
+
+var symbol = new Symbol(path);
+
+// Place the instances of the symbol:
+for (var i = 0; i < count; i++) {
+  // The center position is a random point in the view:
+  var center = Point.random() * view.size;
+  var placedSymbol = symbol.place(center);
+  placedSymbol.scale(i / count);
+}
+
+// The onFrame function is called up to 60 times a second:
+function onFrame(event) {
+
+  // Run through the active layer's children list and change
+  // the position of the placed symbols:
+  for (var i = 0; i < count; i++) {
+    var item = project.activeLayer.children[i];
+
+    
+    // Move the item 1/20th of its width to the right. This way
+    // larger circles move faster than smaller circles:
+    item.position.x += item.bounds.width / 20;
+
+    // If the item has left the view on the right, move it back
+    // to the left:
+    if (item.bounds.left > view.size.width) {
+      item.position.x = -item.bounds.width;
+    }
+  }
+}
+
+</script>
+
+
+
+
+</head>
+<body style="width: 100vw;" id="home">
+   <canvas id="myCanvas" style="width: 100%; height: 100vh; background: linear-gradient(90deg, #02111d 0%,#037bb5 50%,#02111d 100% );" resize></canvas>
+     <h1 class="ml6" style="display: none">
+  <span class="text-wrapper">
+    <span class="letters">Welcome to Pegasis</span>
+  </span>
+</h1>
+  <h1 class="ml7" style="display: none; bottom: 40px;">
+  <span class="text-wrapper">
+    <span class="letters">A Happy Place for Typing</span>
+  </span>
+</h1>
+
+
+
+<div class="pageone" style="height: 0px; width: 0px;">
+<div id="myNav" class="overlay" style="background-color: red;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-arrow-circle-left"></i></a>
+  <div class="overlay-content">
+    <a href="#home" onclick="closeNav()" id="navcontent">Home</a>
+    <a href="stats.html" onclick="closeNav()" id="navcontent">Dashboard</a>
+    <a href="#themes" onclick="closeNav()" id="navcontent">Start Typing</a>
+    <a href="#team" onclick="closeNav()" id="navcontent">Team</a>
+  </div>
+</div>
+
+<div class="header">
+<div class="bar" onclick="openNav()"><i style="color: white; margin-top: 5px;" class="fas fa-bars"></i></div>
+<div class="name">PEGASIS TYPING<div style="display: inline-block;"><img src="images/pegasus1.jpg" style="height: 40px; width: 40px; box-shadow: none;"></div></div>
+<div class="log" onclick="googleSignin()" id="login">LOGIN</div>
+<div class="log" onclick="googleSignout()" id="logout" style="display: none;">LOGOUT</div>
+
+<div id="gui"></div>
+</div>
+
+
+<h1 class="ml8">
+  <span class="letters-container">
+    <span class="letters letters-left">Hi</span>
+    <span class="letters bang">!</span>
+  </span>
+  <span class="circle circle-white"></span>
+  <span class="circle circle-dark"></span>
+  <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+</h1>
+
+
+</div>
+</div>
+
+ <div class="pagetwo" id="themes">
+  <div>
+  <div class="styletwo" data-aos="fade-up">
+    <h1>Typing At Its Best, Type the way you like Type the way you want</h1>
+    <h1>Beautifully crafted Themes for free</h1>
+ </div>
+
+
+<div class="row">
+  <div class="column" data-aos="fade-up">
+    <a href="one.html"><img src="images/one.png" alt="Snow" style="width:100%"></a>
+  </div>
+  <div class="column" data-aos="fade-down">
+   <a href="two.html"> <img src="images/two.png" alt="Forest" style="width:100%"></a>
+  </div>
+   <div class="column" data-aos="fade-down">
+    <a href="three.html"><img src="images/three.png" alt="Forest" style="width:100%"></a>
+  </div>
+   <div class="column" data-aos="fade-up">
+   <a href="four.html"> <img src="images/four.png" alt="Forest" style="width:100%"></a>
+  </div>
+   <div class="column" data-aos="fade-up">
+   <a href="five.html"> <img src="images/five.png" alt="Forest" style="width:100%"></a>
+  </div>
+   <div class="column" data-aos="fade-down">
+   <a href="six.html"> <img src="images/six.png" alt="Forest" style="width:100%"></a>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="stylethree" data-aos="fade-right">
+    <h1>Real Time Graphs for Deep Analysis for free</h1>
+    <h1>After every Typing performance</h1>
+ </div>
+ <div class="columntwo" data-aos="fade-left">
+  
+    <img src="images/graph.png" alt="Forest" style="width:100%">
+
+  </div>
+
+   <div class="columntwo stylethree" data-aos="fade-left" style="padding: 0;">
+  
+   <h1>Save Your Progress for Advanced stats by Logging In </h1>
+    <h1 style="color: black;">Graph Of Average WPM and Accuracy of That Particular Day</h1>
+ </div>
+   
+   <div class="columntwo" data-aos="fade-left">
+    <img src="images/dailygraph.png" alt="Forest" style="width:100%">
+   </div>
+
+
+  <div class="columntwo stylethree" data-aos="fade-left" style="padding: 0px;">
+    <h1 style="color: black">Accuracy, No.of Rights, No.of Wrongs of Each Alphabet</h1>
+  </div>
+
+
+   <div class="columntwo" data-aos="fade-left">
+    <img src="images/letters.png" alt="Forest" style="width:100%">
+   </div>
+
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+<div class="row team" id="team">
+  <h2 style="position: absolute; left: 50%; transform: translate(-50%, -50%); color: black; letter-spacing: 1.2;">TEAM</h2>
+     <h5 style="position: fixed; left: 50%; transform: translate(-50%, -50%); color: black; bottom: 0;"><i style="border: 1px solid white; padding-right: 4px; padding-left: 4px; border-radius: 50%;">c</i> <i>2019</i></h5>
+        
+  <div class="columnthree">
+    <img src="images/aakashdeep.jpg" data-aos="fade-right" alt="Snow" style="width:100%; border-radius: 50%;">
+<div class="icons">  
+<a href="https://www.linkedin.com/in/aakash-deep-212742169"><i class="fab fa-linkedin fa-2x"></i></a>
+<a href="https://twitter.com/Aakashdeep954?s=09"><i class="fab fa-twitter fa-2x"></i></a>
+<a href="https://www.instagram.com/aakashdeep954/"><i class="fab fa-instagram fa-2x" style="padding: 8px;"></i></a>
+</div>
+  </div>
+  <div class="columnthree">
+    <img src="images/sunny.jpg" data-aos="fade-left" alt="Forest" style="width:100%; border-radius: 50%">
+
+   <div class="icons">  
+<a href="https://www.linkedin.com/in/sunny-wahane-51138b16a/"><i class="fab fa-linkedin fa-2x"></i></a>
+<a href="https://twitter.com/WahaneSunny?s=09"><i class="fab fa-twitter fa-2x"></i></a>
+<a href="https://www.instagram.com/wahanesunny?igshid=12cctmwhdbde"><i class="fab fa-instagram fa-2x" style="padding: 8px;"></i></a>
+</div>
+  </div>
+
+</div>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="__/firebase/7.2.3/firebase-app.js"></script>
+
+  <script src="__/firebase/7.2.3/firebase-auth.js"></script>
+  <script src="../www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="__/firebase/init.js"></script>
+
+</body>
+
+<script type="text/javascript" src="javascript/auth.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    AOS.init();
+
+
+  function openNav() {
+  
+    document.getElementById("gui").classList.add("dot")
+     document.getElementById("gui").style.display = "block"
+     var index =  document.querySelectorAll(".ml8 .letters")
+       index[0].style.zIndex = "1"
+       index[1].style.zIndex = "1"
+     setTimeout(nav, 1100)
+     function nav() {
+     	document.querySelector(".overlay").style.display = "block"
+     }
+    
+   
+
+
+  }
+
+
+   
+       function closeNav(){
+
+         document.querySelector(".dot").style.animationName = "downing"
+         document.querySelector(".overlay").style.display = "none"
+         setTimeout(raina, 250)
+
+         function raina() {
+       var index =  document.querySelectorAll(".ml8 .letters")
+
+       index[0].style.zIndex = "2"
+       index[1].style.zIndex = "2"
+     }
+             setTimeout(down, 800)
+           function down() {  
+         document.querySelector("#gui").style.display = "none"
+          document.querySelector(".dot").style.animationName = "scaling"
+
+     }
+    };
+
+
+
+
+
+
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml8 .circle-white',
+    scale: [0, 3],
+    opacity: [1, 0],
+    easing: "easeInOutExpo",
+    rotateZ: 360,
+    duration: 1100
+  }).add({
+    targets: '.ml8 .circle-container',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeInOutExpo",
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8 .circle-dark',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeOutExpo",
+    offset: '-=600'
+  }).add({
+    targets: '.ml8 .letters-left',
+    scale: [0, 1],
+    duration: 1200,
+    offset: '-=550'
+  }).add({
+    targets: '.ml8 .bang',
+    scale: [0, 1],
+    rotateZ: [45, 15],
+    duration: 1200,
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8',
+    opacity: 1,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1400
+  });
+
+anime({
+  targets: '.ml8 .circle-dark-dashed',
+  rotateZ: 360,
+  duration: 8000,
+  easing: "linear",
+  loop: true
+});
+
+
+
+
+setTimeout(text, 2000)
+setTimeout(texttwo, 3500)
+
+
+function text() {
+
+
+document.querySelector(".ml6").style.display = "block"
+  // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 950,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 1,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+}
+
+
+
+
+function texttwo() {
+
+  document.querySelector(".ml7").style.display = "block"
+
+  // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml7 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml7 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 950,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml7',
+    opacity: 1,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+}
+
+
+
+	</script>
+
+<!-- Mirrored from pegasis-typing.web.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2024 10:19:02 GMT -->
+</html>

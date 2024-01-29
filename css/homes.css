@@ -1,0 +1,536 @@
+
+body, html {
+       
+    
+       margin: 0;
+       overflow-x: hidden;
+       width: 100vw;
+      
+
+    }
+
+.pageone {
+  
+  background-color: #d25400; 
+  height: 100vh;
+  width: 100vw;
+
+
+}
+
+    body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: 2s;
+  animation-name: naving;
+  animation-duration: 1s;
+}
+
+@keyframes naving {
+  from {
+    transform: scale(0,0);
+  }
+  to {
+    transform: scale(1,1);
+  }
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: white;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  font-size: 40px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+@keyframes scaling {
+  0% {
+    transform: scale(1,1);
+  }
+
+
+  100% {
+    transform: scale(70,70);
+  }
+}
+
+@keyframes downing {
+  to {
+    transform: scale(0,0);
+  }
+}
+
+#gui {
+  display: none;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  border-radius: 50%;
+  transform: scale(70,70);
+  z-index: 3;
+}
+.dot {
+  
+  animation-name: scaling;
+  animation-duration: 0.8s;
+  
+}
+
+
+
+.bar {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  
+  
+
+
+}
+
+.name {
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 1.5em; 
+  color: white;
+}
+
+.log {
+font-size: 1.2em;
+color: white;
+position: absolute;
+right: 15px;
+top: 15px;
+font-weight: bold;
+cursor: pointer;
+border: 2px solid white;
+border-radius: 50px;
+padding-bottom: 2px;
+padding-top: 2px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.header {
+  position: fixed;
+  background-color: black;
+  height: 50px;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1.ml8 {
+  font-weight: 900;
+  font-size: 4.5em;
+  color: #fff;
+  height: 100%;
+  margin: 0;
+}
+
+.ml8 .letters-container {
+  position: absolute;
+  left: 0;
+  width: fit-content;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  height: 1em;
+}
+
+.ml8 .letters {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 0.7em;
+  right: -0.12em;
+  top: -0.2em;
+}
+
+.ml8 .bang {
+  font-size: 1.4em;
+  top: auto;
+  left: -0.06em;
+}
+
+.ml8 .circle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+}
+
+.ml8 .circle-white {
+  width: 3em;
+  height: 3em;
+  border: 2px dashed white;
+  border-radius: 2em;
+}
+
+.ml8 .circle-dark {
+  width: 2.2em;
+  height: 2.2em;
+  background-color: black;
+  border-radius: 3em;
+  z-index: 1;
+}
+
+.ml8 .circle-dark-dashed {
+  border-radius: 2.4em;
+  background-color: transparent;
+  border: 2px dashed white;
+  width: 2.3em;
+  height: 2.3em;
+}
+
+
+
+
+
+
+  .ml6 {
+  position: absolute;
+  color: white;
+  top: 120px;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  font-weight: 900;
+  font-size: 2.5em;
+}
+
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+
+    .ml7 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  color: white;
+  left: 50vw;
+  font-weight: 900;
+  font-size: 2.5em;
+}
+
+.ml7 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml7 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+
+.pagetwo {
+
+width: 100vw;
+background:linear-gradient(90deg, #ff9a9e 0%,#fecfef 100% );
+}
+
+
+
+.styletwo {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  color: black;
+  font-size: 1.2em;
+  font-weight: 500;
+  overflow-x: hidden;
+  font-family: comic sans MS;
+}
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 8%;
+ 
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+img {
+   box-shadow: 20px 20px 20px grey;
+}
+
+.columntwo {
+  float: left;
+  width: 100%;
+  padding: 12%;
+  padding-top: 1%;
+ background:linear-gradient(90deg, #ff9a9e 0%,#fecfef 100% );
+ 
+}
+
+.stylethree {
+  font-weight: 500;
+  text-align: center;
+  color: white;
+  background:linear-gradient(90deg, #ff9a9e 0%,#fecfef 100% );
+  font-family: comic sans MS;
+}
+
+
+@media screen and (max-width: 800px) {
+ .stylethree {
+    font-size: 0.7em;
+  }
+
+  .styletwo {
+    font-size: 0.7em;
+  }
+
+  .ml6 {
+    font-size: 1.5em;
+    width: fit-content;
+    transform: translate(-50%, -50%);
+  }
+
+  .ml7 {
+    font-size: 1.4em;
+    width: fit-content;
+    transform: translate(-50%, -50%);
+    
+  }
+  
+  .log {
+    font-size: 0.9em;
+    right: 8px;
+    top: 15px;
+  }
+
+  .name {
+    font-size: 1.0em;
+  }
+
+  .bar {
+    font-size: 24px;
+    top: 12px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+}
+
+
+.stylefour {
+
+  font-size: 1.2em;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+  width: 100%;
+  background-color: green;
+  font-family: comic sans MS;
+
+}
+
+
+
+
+.team {
+  background-color: #f68484;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+
+.columnthree {
+
+  float: left;
+  width: 50%;
+  padding: 18%;
+  height: 50vh;
+  
+}
+
+.icons {
+  padding: 0px;
+  width: max-content;
+}
+
+
+.icons a i {
+  padding: 20px;
+  color: black;
+}
+
+
+.columntext {
+
+   float: left;
+  width: 100%;
+}
+
+
+
+
+
+@media screen and (max-width: 700px) {
+
+.columnthree {
+    width: 100%;
+    padding-left: 30%;
+    padding-top: 15%;
+    padding-right: 30%;
+    padding-bottom: 2%;
+  }
+
+
+.icons a i {
+  padding: 8px;
+  
+}
+
+
+
+
+}
+
+
+
+
+img:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+#navcontent:hover {
+  background-color: black;
+
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  width: 0px;
+}
+
+
+.closebtn:hover {
+  color: black;
+}
+
+

@@ -1,0 +1,298 @@
+
+body, html {
+	height: 100%;
+	margin: 0;
+  width: 100%;
+  transition: 4s;
+}
+
+.background {
+  background-image: url(https://images.unsplash.com/photo-1418985991508-e47386d96a71?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 4s;
+  animation-name: dis;
+  animation-duration: 3s;
+}
+
+.after {
+  background: linear-gradient(90deg, #5c258d 0%,#4389a2 100% );
+  transition: 4s;
+}
+
+.divone {
+  position: absolute; 
+  left: 50%; 
+  margin-left: -250px; 
+  border-radius: 9%; 
+  border: solid white 2px; 
+  height: 320px; width: 500px; 
+  margin-top: 10px; 
+  background-color: black;
+  transition: 4s;
+}
+
+
+.divtwo {
+  position: absolute; 
+  left: 50%; top: 54%; 
+  margin-left: -250px; 
+  border-radius: 9%; 
+  border: solid white 2px; 
+  height: 320px; width: 500px; 
+  margin-top: 10px; 
+  transition: 4s; 
+  background-color: black;
+}
+
+.main { 
+   width: 490px; 
+   height: 270px;
+   color: white;
+   border-radius: 5px;
+   margin-right: 6px;
+   margin-left: 0px;
+   margin-top: 20px;
+
+
+}
+
+.shadow {
+  box-shadow: 0 0 5px white, 0 0 8px white, 0 0 8px white, 0 0 8px white;
+
+
+}
+
+.shadow3 {
+
+  box-shadow: 0 0 5px #00f260, 0 0 10px blue, 0 0 20px blue, 0 0 8px blue, 0 0 15px blue, 0 0 25px #00f260;
+
+
+}
+
+.shadow4 {
+
+  box-shadow: 0 0 5px #00f260, 0 0 10px yellow, 0 0 20px yellow, 0 0 8px yellow, 0 0 15px blue, 0 0 25px #00f260;
+
+}
+
+.shadow5 {
+
+   box-shadow: 0 0 5px #037bb5, 0 0 10px #037bb5, 0 0 20px #037bb5, 0 0 25px #037bb5, 0 0 25px blue;
+
+}
+
+.shadow6 {
+
+  box-shadow: 0 0 5px orange, 0 0 10px orange, 0 0 20px orange, 0 0 25px orange, 0 0 25px blue;
+
+
+}
+
+.shadow7 {
+  background-image: url(https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1101&amp;q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+}
+
+
+
+
+textarea { 
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  color: white;
+  border: none;
+  font-family: sans-serif;
+  font-weight: bold;
+
+
+
+  
+
+
+
+
+}
+
+
+.buttons {
+  margin-left: 20px;
+
+}
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+
+
+.anim {
+  animation-name: scaling;
+  animation-duration: 3s;
+
+
+}
+
+.tooltip {
+  animation-name: tooltip;
+  animation-duration: 6s;
+  
+
+
+}
+
+.awesome {
+  position: absolute; 
+  top: 47%; 
+  left: 50%; 
+  width: 500px; 
+  margin-left: -250px;
+  transition: 4s;
+
+}
+
+.resulting {
+  left: 0%;
+  margin-left: -500px;
+
+}
+
+.result {
+  left: 0%;
+  margin-left: -504px;
+}
+
+@keyframes tooltip {
+  from {
+    transform: scale(0,0);
+  }
+  to {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes scaling {
+  from {
+    transform: scale(0,0);
+    background-color: transparent;
+  }
+
+  to {
+    transform: scale(1,1);
+    background-color: black;
+  }
+}
+
+
+#myDivone {
+  position: absolute;
+  width: 500px;
+  height: 290px;
+  left: 8%;
+  top: 0%;
+  animation-name: dis;
+  animation-duration: 3s;
+
+
+
+}
+
+.dis {
+  display: none;
+  
+
+}
+
+#myDivtwo {
+   position: absolute;
+  width: 500px;
+  height: 290px;
+  right: 8%;
+  top: 0%;
+  animation-name: dis;
+  animation-duration: 3s;
+  
+
+}
+
+#myDivthree {
+    position: absolute;
+  width: 1250px;
+  height: 450px;
+  left: 8%;
+  top: 38%;
+  animation-name: dis;
+  animation-duration: 3s;
+  
+
+}
+
+@keyframes dis {
+  from {
+    transform: scale(0,0)
+  }
+  to {
+    transform: scale(1,1);
+  }
+}
+
+
+
+#back {
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  background-color: #5c258d;
+  font-size: 2em;
+  cursor: pointer;
+  animation-name: dis;
+  animation-duration: 3s;
+  color: white
+  
+}
+
+#back:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+  color: black;
+
+}
+
+
+
+@keyframes backing {
+   to {
+    transform: scale(0,0);
+  }
+}
+
+
